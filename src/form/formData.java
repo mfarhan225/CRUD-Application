@@ -39,7 +39,7 @@ public class formData extends javax.swing.JFrame {
     private void cariData() {
         try {
             st = cn.createStatement();
-            rs = st.executeQuery("SELECT * FROM dbmahasiswa WHERE " + 
+            rs = st.executeQuery("SELECT * FROM informasi_mahasiswa WHERE " + 
                     cmbCari.getSelectedItem().toString()
                     + " LIKE '%" + txtCari.getText() + "%'");
             
@@ -76,7 +76,7 @@ public class formData extends javax.swing.JFrame {
     private void tampilData(){
         try {
             st = cn.createStatement();
-            rs = st.executeQuery("SELECT * FROM dbmahasiswa");
+            rs = st.executeQuery("SELECT * FROM informasi_mahasiswa");
             
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("No. ");
@@ -348,12 +348,12 @@ public class formData extends javax.swing.JFrame {
              }
              
              if (btnSimpan.getText() == "Simpan") {
-                String cek = "SELECT * FROM dbmahasiswa WHERE NIM = '" + txtNIM.getText() + "'";
+                String cek = "SELECT * FROM informasi_mahasiswa WHERE NIM = '" + txtNIM.getText() + "'";
                 rs = st.executeQuery(cek);
                 if (rs.next()) {
                     JOptionPane.showMessageDialog(null, "Ups... NIM ini sudah ada");   
                 }else{
-                    String sql = "INSERT INTO dbmahasiswa VALUES ('" + txtNIM.getText() + 
+                    String sql = "INSERT INTO informasi_mahasiswa VALUES ('" + txtNIM.getText() + 
                             "','" + txtNama.getText() +
                             "','" + txtGender.getText() +
                             "','" + txtProdi.getText() +
@@ -364,7 +364,7 @@ public class formData extends javax.swing.JFrame {
                     tampilData();
                 }
             }else{
-                 String update = "UPDATE dbmahasiswa SET nama = '" + txtNama.getText() +
+                 String update = "UPDATE informasi_mahasiswa SET nama = '" + txtNama.getText() +
                          "', Gender = '" + txtGender.getText() +
                          "', Prodi = '" + txtProdi.getText() +
                          "', Alamat = '" + txtAlamat.getText() +
@@ -404,7 +404,7 @@ public class formData extends javax.swing.JFrame {
             if (jawab == 0) {
                 try {
                     st = cn.createStatement();
-                    String sql = "DELETE FROM biodata WHERE NIM = '" +txtNIM.getText() + "'";
+                    String sql = "DELETE FROM informasi_mahasiswa WHERE NIM = '" +txtNIM.getText() + "'";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                     tampilData();

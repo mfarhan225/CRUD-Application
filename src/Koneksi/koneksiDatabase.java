@@ -19,7 +19,7 @@ public class koneksiDatabase {
           Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/dbmahasiswa", "root", "");
           return cn;
       } catch (Exception e) {
-          JOptionPane.showMessageDialog(null, e);
+          JOptionPane.showMessageDialog(null, "e");
           return null;
       }
    }
